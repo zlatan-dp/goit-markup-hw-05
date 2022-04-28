@@ -7,6 +7,8 @@
   --main-margin: 30px;
   --second-margin: 50px;
   --icon-color: #afb1b8;
+  --trans-dur: 250ms;
+  --trans-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -130,10 +132,24 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-color);
+
+  transition: color var(--trans-dur) var(--trans-timing-function);
 }
 
 .current {
+  position: relative;
   color: var(--accent-color);
+}
+
+.current::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -32.5px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 
 .header-contacts-link {
@@ -144,6 +160,8 @@ img {
   color: var(--second-color);
   display: flex;
   align-items: center;
+
+  transition: color var(--trans-dur) var(--trans-timing-function);
 }
 
 .contacts-item-icon {
@@ -203,6 +221,8 @@ img {
   color: var(--white-color);
   cursor: pointer;
   padding: 10px 32px;
+
+  transition: background-color var(--trans-dur) var(--trans-timing-function);
 }
 
 .hero-btn:hover,
@@ -268,8 +288,31 @@ img {
   display: flex;
 }
 
+.work-item {
+  position: relative;
+}
+
 .work-item + .work-item {
   margin-left: var(--main-margin);
+}
+
+.work-cover-text {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  background-color: rgba(47, 48, 58, 0.8);
+  color: var(--white-color);
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 /* Секция нашей команды */
@@ -344,6 +387,9 @@ img {
   justify-content: center;
   align-items: center;
   color: var(--icon-color);
+
+  transition: background-color var(--trans-dur) var(--trans-timing-function),
+    color var(--trans-dur) var(--trans-timing-function);
 }
 
 .team-icon {
@@ -384,10 +430,15 @@ img {
   justify-content: center;
   align-items: center;
   color: var(--icon-color);
+
+  transition: background-color var(--trans-dur) var(--trans-timing-function),
+    color var(--trans-dur) var(--trans-timing-function),
+    filter var(--trans-dur) var(--trans-timing-function);
 }
 
 .clients-icon {
   fill: currentColor;
+  transition: filter var(--trans-dur) var(--trans-timing-function);
 }
 
 .clients-link:hover,
@@ -428,6 +479,10 @@ img {
   cursor: pointer;
   color: var(--main-color);
   padding: 6px 22px;
+
+  transition: background-color var(--trans-dur) var(--trans-timing-function),
+    color var(--trans-dur) var(--trans-timing-function),
+    box-shadow var(--trans-dur) var(--trans-timing-function);
 }
 
 .portfolio-btn:hover,
@@ -451,12 +506,37 @@ img {
 }
 .portfolio-link {
   display: block;
+  transition: box-shadow var(--trans-dur) var(--trans-timing-function);
 }
 
 .portfolio-link:hover,
 .portfolio-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.examples-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.examples-cover-text {
+  position: absolute;
+  top: 0;
+  transform: translateY(100%);
+  height: 100%;
+  transition: transform var(--trans-dur) var(--trans-timing-function);
+
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--white-color);
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.portfolio-link:hover .examples-cover-text {
+  transform: translateY(0%);
 }
 
 .portfolio-examles-content {
@@ -515,6 +595,8 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--white-color);
+
+  transition: color var(--trans-dur) var(--trans-timing-function);
 }
 
 .footer-item-link {
@@ -523,6 +605,8 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.6);
+
+  transition: color var(--trans-dur) var(--trans-timing-function);
 }
 
 .footer-item-adress:hover,
@@ -564,6 +648,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: background-color var(--trans-dur) var(--trans-timing-function);
 }
 
 .footer-icon {
@@ -574,3 +660,5 @@ img {
 .footer-soc-link:focus {
   background-color: var(--accent-color);
 }
+
+.backdrop
